@@ -26,7 +26,7 @@ public class PurchaseService {
         scannedProductList.stream().forEach(s -> {
             Optional<Product> product = productRepository.findById(s.getProductId());
             product.ifPresent(p -> purchaseRepository.save(new Purchase(
-                    p, s.getQty(), bill)));
+                    null, s.getQty(), bill)));
         });
     }
 }

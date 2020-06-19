@@ -1,5 +1,6 @@
 package com.retailstore.checkout.service;
 
+import com.retailstore.checkout.controller.exception.CustomException;
 import com.retailstore.checkout.controller.requestbody.ScannedProduct;
 import com.retailstore.checkout.model.Bill;
 import com.retailstore.checkout.model.Product;
@@ -34,7 +35,8 @@ public class BillService {
     }
 
     public Bill getBillById(Long id) {
-        return billRepository.findById(id).orElse(new Bill());
+        return billRepository.findById(id).orElseThrow(() ->
+                new CustomException("Bill is not found with id : " + id));
     }
 
     public Bill createBill(List<ScannedProduct> scannedProductList) {

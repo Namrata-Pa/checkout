@@ -30,7 +30,7 @@ public class BillCheckoutCounter {
         return new ResponseEntity<>(billService.getBillById(id), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "cbill", method = RequestMethod.POST,
+    @RequestMapping(value = "/cbill", method = RequestMethod.POST,
                     consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Bill> createBill(@RequestBody BillingProducts billingProducts) throws JsonProcessingException {
         return new ResponseEntity<>(billService.createBill(billingProducts.getScannedProductList()), HttpStatus.OK);

@@ -1,5 +1,6 @@
 package com.retailstore.checkout.service;
 
+import com.retailstore.checkout.controller.exception.CustomException;
 import com.retailstore.checkout.model.Product;
 import com.retailstore.checkout.repository.ProductRepository;
 import com.retailstore.checkout.repository.PurchaseRepository;
@@ -23,7 +24,8 @@ public class ProductService {
     }
 
     public Product getProductById(long id) {
-        return productRepository.findById(id).orElse(new Product(0, "Dummy", "Dummy", "N", 0.00, 0));
+        return productRepository.findById(id).orElseThrow(() ->
+                new CustomException("Product is not found with Id : " + id));
     }
 
 }
