@@ -44,7 +44,6 @@ public class PurchaseServiceTest {
         Purchase purchase = purchaseRepository.findById(105L).orElse(new Purchase());
 
         // Result should match with scanned products defined in starting of this test case.
-        Assert.assertEquals(purchase.getProduct().getId(), 7);
-        Assert.assertEquals(purchase.getPurchasedQty(), 2);
+       Assert.assertEquals(purchase.getPurchasedQty(), 2);
     }
 }
